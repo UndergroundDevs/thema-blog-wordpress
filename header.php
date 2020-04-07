@@ -1,98 +1,89 @@
-<?php
-/**
- * The header for our theme.
- *
- * Displays all of the <head> section and everything up till <div id="content">
- */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-  <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<!DOCTYPE html>
+<html style="margin: unset;">
+<head>
+     
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title><?php wp_title(); ?>Under</title>
 	
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	 <link rel="stylesheet " href="assest/css/bootstrap.min.css">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
+    <!--nuvem-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800 ">
+    <!--nuvem-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic ">
+    <link href="https://fonts.googleapis.com/css?family=Comic+Neue&display=swap" rel="stylesheet">
+
+    <link href="assest/fonts/font-awesome.min.css ">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+    <!--icone do site-->
+    <link rel="icon" href="assest/img/icon.png">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161188176-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-161188176-1');
+    </script>
+
+
 
 	<?php wp_head(); ?>
-  </head>
+</head>
 
-  <body <?php body_class(); ?>>
-  
-  <?php do_action('gohost_before_site'); ?>
-  	<?php 
-	if ( function_exists( 'gohost_contact_info' ) ) {
-		gohost_contact_info(); 
-	}?>
-	
-    <header id="masthead"  class="site-header  float-header" role="banner">
-		<div class="head-wrap banner-background">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<?php if ( get_theme_mod('custom_logo') ) : 
-							$custom_logo_id = get_theme_mod( 'custom_logo' );
-							$logo_src = wp_get_attachment_image_src( $custom_logo_id , 'full' );?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr ( bloginfo('name') ); ?>"><img class="site-logo" src="<?php echo esc_url( $logo_src[0] ); ?>" /></a>
-						<?php else : ?>
-							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php esc_html( bloginfo( 'name' ) ); ?></a></h1>
-							<h5 class="site-description"><?php esc_html( bloginfo( 'description' ) ); ?></h5>	        
-						<?php endif; ?>
-					</div>
-					<div class="col-md-8 col-sm-6 col-xs-12">
-						<div class="btn-menu"></div>
-						<nav id="site-navigation" class="site-navigation" role="navigation">
-							<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-						</nav><!-- #site-navigation -->
-					</div>
-				</div>
-			</div>
-		</div>
-    </header>
-	
-	<?php 
-	if ( function_exists( 'gohost_mobile_header' ) ) {
-		//gohost_mobile_header(); 
-	}?>
-	<?php
+<body>
 
-		$banner_type = get_theme_mod('banner_type', 'image');
-		if ( $banner_type != 'bgnone' || is_blog()){
-	?>
-	<div class="gohost-banner-area">
-		<?php if( is_front_page() ) : ?>
-			<?php
-				if ( $banner_type == 'video' && is_front_page() ) :
-					gohost_banner_video();
-				elseif ( $banner_type == 'carousel' && is_front_page() ) :
-					gohost_banner_slider();
-				else :
-					gohost_banner_background();
-				endif;
-			?>
-		<?php else : ?>
-			<div class="">
-				<div class="header-content other">
-					<?php if(function_exists('is_shop')) : ?>
-						<h3 class="title-post entry-title"><?php wp_title(''); ?></h3>
-					<?php else : ?>
-						<h3 class="title-post entry-title"><?php wp_title(''); ?></h3>
-					<?php endif; ?>
-					<hr class="divider-separator"/>
-					<?php if( get_theme_mod('show_breadcrumb', 1) != 0 ): ?>
-					<div class = "breadcrumb" ><?php if (class_exists('WooCommerce')){
-							( (is_woocommerce())? woocommerce_breadcrumb() :gohost_get_breadcrumb() );
-						}else{
-							gohost_get_breadcrumb();
-						}?></div>
-					<?php endif; ?>
-				</div>
-			</div>
-		<?php endif;?>
-	</div>
-	<?php } ?>
-	
-	<div id="content" class="page-wrap">
-		<div class="content-wrapper">
-			<div class="container">
+    <nav class="navbar" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="<?php echo site_url(); ?>" style="color: rgb(237,237,237)">
+                <img class="slogan" src="assest/img/underground-slogan1.png" alt="">
+            </a>
+            <div class="collapse" id="navbarResponsive">
+                <ul class="nav">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="assest/about/">SOBRE</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="http://blog.undergrounds.rf.gd/">BLOG</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#portfolio">SERVIÇOS</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#contact">CONTATO</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<nav class="header">
+    <nav class="center">
+
+            <h1 class="under"><a href=" <?php echo site_url(); ?>">UNDERGROUND<br>DEVS</a></h1>
+
+
+    </nav>
+</nav>
+
+    
+   
+    
+
+
+
+
+
